@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {FaWhatsapp} from "react-icons/fa";
+import {FaWhatsapp, FaInstagram} from "react-icons/fa";
 import {FiClock, FiInfo} from "react-icons/fi";
 import {Map, Marker, TileLayer} from "react-leaflet";
 import {useParams} from 'react-router-dom';
@@ -17,6 +17,8 @@ interface Orphanage {
     instructions: string;
     opening_hours: string;
     open_on_weekends: boolean;
+    whatsapp: string;
+    instagram: string;
     images: Array<{
         id: number;
         url: string
@@ -114,19 +116,29 @@ export default function Orphanage() {
                             {orphanage.open_on_weekends ? (<div className="open-on-weekends">
                                 <FiInfo size={32} color="#39CC83"/>
                                 Atendemos <br/>
-                                fim de semana
+                                no fim de semana
                             </div>) : (<div className="open-on-weekends dont-open">
                                 <FiInfo size={32} color="#FF669D"/>
                                 Não atendemos <br/>
-                                fim de semana
+                                no fim de semana
                             </div>)}
                             9
                         </div>
 
-                        {/*<button type="button" className="contact-button">*/}
-                        {/*    <FaWhatsapp size={20} color="#FFF"/>*/}
-                        {/*    Entrar em contato*/}
-                        {/*</button>*/}
+                        <a href={`https://wa.me/55${orphanage.whatsapp}`} target="_blank">
+                            <button type="button" className="contact-button whatsapp">
+                                <FaWhatsapp size={20} color="#FFF"/>
+                                Entre em contato
+                            </button>
+                        </a>
+
+                        <a href={`https://www.instagram.com/${orphanage.instagram}`} target="_blank">
+                            <button type="button" className="contact-button instagram">
+                                <FaInstagram size={20} color="#FFF"/>
+                                Veja no Instagram
+                            </button>
+                        </a>
+
                     </div>
                 </div>
             </main>

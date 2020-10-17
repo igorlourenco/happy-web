@@ -146,16 +146,18 @@
   color: #FF669D;
 }
 
-.orphanage-details .orphanage-details-content button.contact-button {
+.orphanage-details .orphanage-details-content a {
+  text-decoration: none;
+}
+
+.orphanage-details .orphanage-details-content a button.contact-button {
   margin-top: 64px;
 
   width: 100%;
   height: 64px;
   border: 0;
   cursor: pointer;
-  background: #3CDC8C;
   border-radius: 20px;
-  color: #FFFFFF;
   font-weight: 800;
 
   display: flex;
@@ -165,10 +167,24 @@
   transition: background-color 0.2s;
 }
 
-.orphanage-details .orphanage-details-content button.contact-button svg {
+.orphanage-details .orphanage-details-content a button.contact-button.whatsapp {
+  background: #3CDC8C;
+  color: #FFFFFF;
+}
+
+.orphanage-details .orphanage-details-content a button.contact-button.instagram {
+  background: #F23575;
+  color: #FFFFFF;
+}
+
+.orphanage-details .orphanage-details-content a button.contact-button svg {
   margin-right: 16px;
 }
 
-.orphanage-details .orphanage-details-content button.contact-button:hover {
+.orphanage-details .orphanage-details-content a button.contact-button.whatsapp:hover {
   background: #36CF82;
+}
+
+.orphanage-details .orphanage-details-content a button.contact-button.instagram:hover {
+  background: #E1306C;
 }

@@ -7,7 +7,6 @@ import {FiPlus} from "react-icons/fi";
 import '../styles/pages/create-orphanage.css';
 import Sidebar from "../components/Sidebar";
 import mapIcon from "../Util/mapIcon";
-import {Simulate} from "react-dom/test-utils";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
 
@@ -21,6 +20,8 @@ export default function CreateOrphanage() {
     const [instructions, setInstructions] = useState("");
     const [opening_hours, setOpeningHours] = useState("");
     const [open_on_weekends, setOpenOnWeekends] = useState(true);
+    const [whatsapp, setWhatsapp] = useState("");
+    const [instagram, setInstagram] = useState("");
     const [images, setImages] = useState<File[]>([]);
     const [previewImages, setPreviewImages] = useState<string[]>([])
 
@@ -62,15 +63,14 @@ export default function CreateOrphanage() {
         data.append("instructions", instructions);
         data.append("opening_hours", opening_hours);
         data.append("open_on_weekends", String(open_on_weekends));
+        data.append("whatsapp", whatsapp);
+        data.append("instagram", instagram);
 
         images.forEach(image => {
             data.append('images', image);
         })
 
         await api.post('orphanages', data);
-
-
-        alert("cadastro realizado.");
 
         history.push("/app");
     }
@@ -185,6 +185,28 @@ export default function CreateOrphanage() {
                                     Não
                                 </button>
                             </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Contato</legend>
+
+                        <div className="input-block">
+                            <label htmlFor="whatsapp">WhatsApp</label>
+                            <input
+                                id="whatsapp"
+                                value={whatsapp}
+                                onChange={event => setWhatsapp(event.target.value)}
+                            />
+                        </div>
+
+                        <div className="input-block">
+                            <label htmlFor="instagram">Instagram</label>
+                            <input
+                                id="instagram"
+                                value={instagram}
+                                onChange={event => setInstagram(event.target.value)}
+                            />
                         </div>
                     </fieldset>
 
