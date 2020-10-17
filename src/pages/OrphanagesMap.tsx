@@ -32,8 +32,8 @@ function OrphanagesMap() {
                 <header>
                     <img src={mapMarkerImg} alt="Happy"/>
 
-                    <h2>Escolha um orfanato no mapa</h2>
-                    <p>Muitas crianças estão esperando a sua visita :)</p>
+                    <h2>Escolha um abrigo no mapa</h2>
+                    <p>Muitas pessoas estão esperando a sua visita :)</p>
                 </header>
 
                 <footer>
