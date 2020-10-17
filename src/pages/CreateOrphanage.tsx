@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, SyntheticEvent, useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import {Map, Marker, TileLayer} from 'react-leaflet';
 import {LeafletMouseEvent} from "leaflet";
 
@@ -9,6 +9,8 @@ import Sidebar from "../components/Sidebar";
 import mapIcon from "../Util/mapIcon";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
+
+import InputMask from "react-input-mask";
 
 export default function CreateOrphanage() {
 
@@ -55,6 +57,8 @@ export default function CreateOrphanage() {
 
         const {latitude, longitude} = position;
 
+        const finalWhatsapp = whatsapp.replace("-", "").replace(" ", "");
+
         const data = new FormData();
         data.append("name", name);
         data.append("about", about);
@@ -63,7 +67,7 @@ export default function CreateOrphanage() {
         data.append("instructions", instructions);
         data.append("opening_hours", opening_hours);
         data.append("open_on_weekends", String(open_on_weekends));
-        data.append("whatsapp", whatsapp);
+        data.append("whatsapp", finalWhatsapp);
         data.append("instagram", instagram);
 
         images.forEach(image => {
@@ -193,7 +197,8 @@ export default function CreateOrphanage() {
 
                         <div className="input-block">
                             <label htmlFor="whatsapp">WhatsApp</label>
-                            <input
+                            <InputMask
+                                mask="99 99999-9999"
                                 id="whatsapp"
                                 value={whatsapp}
                                 onChange={event => setWhatsapp(event.target.value)}
