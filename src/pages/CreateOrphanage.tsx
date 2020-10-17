@@ -8,7 +8,7 @@ import '../styles/pages/create-orphanage.css';
 import Sidebar from "../components/Sidebar";
 import mapIcon from "../Util/mapIcon";
 import api from "../services/api";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 import InputMask from "react-input-mask";
 
@@ -36,8 +36,8 @@ export default function CreateOrphanage() {
         });
     }
 
-    function handleSelectImages(event: ChangeEvent<HTMLInputElement>){
-        if (!event.target.files){
+    function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
+        if (!event.target.files) {
             return;
         }
 
@@ -52,7 +52,7 @@ export default function CreateOrphanage() {
         setPreviewImages(selectedImagesPreview);
     }
 
-    async function handleSubmit(event: FormEvent){
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
         const {latitude, longitude} = position;
@@ -88,7 +88,11 @@ export default function CreateOrphanage() {
                         <legend>Dados</legend>
 
                         <Map
-                            center={[-10.2502971, -48.3523869]}
+                            center={
+                                [
+                                    Number(process.env.REACT_APP_INITIAL_LATITUDE),
+                                    Number(process.env.REACT_APP_INITIAL_LONGITUDE)
+                                ]}
                             style={{width: '100%', height: 280}}
                             zoom={15}
                             onClick={handleMapClick}
@@ -144,7 +148,7 @@ export default function CreateOrphanage() {
                                     <FiPlus size={24} color="#15b6d6"/>
                                 </label>
                             </div>
-                            <input multiple onChange={handleSelectImages} type="file" id="image[]" />
+                            <input multiple onChange={handleSelectImages} type="file" id="image[]"/>
                         </div>
                     </fieldset>
 

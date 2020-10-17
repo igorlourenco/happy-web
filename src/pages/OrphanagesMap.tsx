@@ -43,7 +43,10 @@ function OrphanagesMap() {
             </aside>
 
             <Map
-                center={[-10.2502971, -48.3523869]}
+                center={[
+                    Number(process.env.REACT_APP_INITIAL_LATITUDE),
+                    Number(process.env.REACT_APP_INITIAL_LONGITUDE)
+                ]}
                 zoom={15}
                 style={{width: '100%', height: '100%'}}
             >
